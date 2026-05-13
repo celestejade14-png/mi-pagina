@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Sarah Wendy | Estudio de Belleza & Maquillaje Artístico</title>
+    <!-- Google Fonts Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Paleta delicada y glamurosa */
+        :root {
+            --rose-blush: #FCE4EC;
+            --rose-powder: #F8D9E2;
+            --dusty-rose: #D4A5B0;
+            --antique-rose: #C48B9B;
+            --deep-rose: #B2707E;
+            --warm-grey: #5E4B4F;
+            --soft-pearl: #FFF9FA;
+            --gold-shimmer: #E4C4B0;
+            --glass-bg: rgba(255, 245, 247, 0.72);
+            --card-glass: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(145deg, #FFF5F7 0%, #FEF0F4 100%);
+            color: var(--warm-grey);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* Decoración elegant floating */
+        .bg-floral {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.3;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23D4A5B0" d="M70,40 Q90,20 110,40 Q130,60 110,80 Q90,100 70,80 Q50,60 70,40Z" opacity="0.2"/><path fill="%23C48B9B" d="M130,120 Q150,100 170,120 Q190,140 170,160 Q150,180 130,160 Q110,140 130,120Z" opacity="0.15"/><circle cx="40" cy="150" r="12" fill="%23E4C4B0" opacity="0.25"/><circle cx="160" cy="40" r="18" fill="%23D4A5B0" opacity="0.2"/></svg>');
+            background-repeat: repeat;
+            background-size: 70px;
+        }
+
+        /* Navegación cristal */
+        nav {
+            background: rgba(255, 250, 250, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 165, 176, 0.3);
+            transition: all 0.4s;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #B2707E, #D4A5B0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            font-size: 0.85rem;
+            font-weight: 300;
+            background: none;
+            -webkit-background-clip: unset;
+            color: #8B6B70;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #5E3E44;
+            position: relative;
+        }
+        .nav-links a:before {
+            content: "?";
+            opacity: 0;
+            position: absolute;
+            left: -18px;
+            font-size: 0.7rem;
+            transition: 0.2s;
+            color: var(--dusty-rose);
+        }
+        .nav-links a:hover:before {
+            opacity: 1;
+            left: -14px;
+        }
+        .nav-links a:hover {
+            color: var(--deep-rose);
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--deep-rose);
+            cursor: pointer;
+        }
+
+        /* Secciones general */
+        section {
+            padding: 7rem 7% 6rem;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(125deg, #C48B9B, #9D6B78);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title:after {
+            content: "?";
+            font-size: 1.8rem;
+            background: none;
+            -webkit-background-clip: unset;
+            color: var(--dusty-rose);
+            display: block;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+
+        /* Hero más glamoroso */
+        #inicio {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at 10% 30%, rgba(252, 228, 236, 0.6), rgba(248, 217, 226, 0.75)), url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            position: relative;
+        }
+        #inicio h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #AA7C86, #633E46);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 12px rgba(255,215,215,0.3);
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            background: rgba(255,245,240,0.5);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+        .btn {
+            background: linear-gradient(95deg, #C48B9B, #B07182);
+            color: white;
+            padding: 1rem 2.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            border: none;
+            box-shadow: 0 10px 22px rgba(176, 113, 130, 0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn i {
+            font-size: 1rem;
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 28px rgba(176, 113, 130, 0.4);
+            background: linear-gradient(95deg, #B98292, #A16173);
+        }
+
+        /* Sobre nosotros con borde delicado */
+        #sobre-nosotros {
+            background: var(--soft-pearl);
+            border-radius: 60px 60px 0 0;
+            margin-top: -30px;
+            box-shadow: 0 -12px 28px rgba(0,0,0,0.02);
+        }
+        .about-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,250,245,0.7);
+            backdrop-filter: blur(3px);
+            padding: 2.5rem;
+            border-radius: 64px;
+            border: 1px solid rgba(212,165,176,0.5);
+            text-align: center;
+        }
+        .about-card p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            margin-top: 1.2rem;
+            color: var(--antique-rose);
+        }
+
+        /* Servicios con glassmorfismo */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 2rem 1.6rem;
+            text-align: center;
+            transition: 0.25s ease;
+            border: 1px solid rgba(212,165,176,0.4);
+            box-shadow: 0 20px 32px -12px rgba(0,0,0,0.05);
+        }
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--dusty-rose);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 30px 40px -12px rgba(176, 113, 130, 0.2);
+        }
+        .service-icon {
+            font-size: 2.8rem;
+            background: linear-gradient(145deg, #C48B9B, #AA7483);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.7rem;
+            margin: 0.5rem 0;
+            color: #9D6B78;
+        }
+        .service-price {
+            display: inline-block;
+            background: #FFF0F2;
+            padding: 0.4rem 1.3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: #B07382;
+            margin-top: 1rem;
+        }
+
+        /* Agendar cita lujoso */
+        #agendar {
+            background: linear-gradient(130deg, #FCE9EE, #FDEFF3);
+            border-radius: 0 0 70px 70px;
+        }
+        .booking-luxury {
+            max-width: 680px;
+            margin: 0 auto;
+            background: rgba(255, 248, 245, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 2.8rem;
+            border-radius: 64px;
+            text-align: center;
+            border: 1px solid rgba(212,165,176,0.6);
+            transition: 0.2s;
+        }
+        .booking-luxury p {
+            font-size: 1.1rem;
+            margin: 1rem 0 2rem;
+        }
+        .btn-wa {
+            background: #25D366;
+            box-shadow: 0 8px 16px rgba(37, 211, 102, 0.25);
+        }
+
+        /* Contacto con detalles dorados */
+        #ubicacion-contacto {
+            background: #FEF5F7;
+        }
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .contact-glam {
+            background: rgba(255, 245, 240, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 2rem 2rem;
+            flex: 1;
+            min-width: 240px;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid rgba(196, 139, 155, 0.3);
+        }
+        .contact-glam i {
+            font-size: 2.3rem;
+            color: var(--antique-rose);
+            margin-bottom: 0.8rem;
+        }
+        .phone-number {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #B88B98, #9D6B78);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .small-wa {
+            margin-top: 1rem;
+            background: #25D36620;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #453538;
+            color: #F3E1E5;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Animaciones de entrada */
+        @keyframes softAppear {
+            from { opacity: 0; transform: translateY(18px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        section, .service-card, .about-card, .booking-luxury {
+            animation: softAppear 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 820px) {
+            .section-title { font-size: 2.4rem; }
+            #inicio h1 { font-size: 3.4rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .nav-links { gap: 1.2rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: rgba(255, 245, 240, 0.98);
+                backdrop-filter: blur(16px);
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 2rem;
+                border-radius: 0 0 42px 42px;
+                gap: 1rem;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+            .about-card { padding: 1.5rem; }
+            .btn { padding: 0.8rem 1.8rem; }
+        }
+        @media (max-width: 500px) {
+            section { padding: 5rem 5%; }
+            .service-card h3 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-floral"></div>
+
+<nav>
+    <div class="logo">SARAH WENDY <span>• atelier</span></div>
+    <div class="menu-btn" id="menuBtn"><i class="fas fa-feather-alt"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-nosotros">Esencia</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#agendar">Citas</a></li>
+        <li><a href="#ubicacion-contacto">Estudio</a></li>
+        <li><a href="#ubicacion-contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section id="inicio">
+    <h1>Sarah Wendy</h1>
+    <div class="hero-subtitle"> Atelier de Belleza & Alta Maquillaje </div>
+    <p style="max-width: 550px; font-weight: 400; margin-bottom: 2rem;">Descubre el arte de realzar tu esencia con técnicas de lujo y calidez femenina.</p>
+    <a href="#agendar" class="btn"><i class="fas fa-calendar-alt"></i> Reserva tu experiencia</a>
+</section>
+
+<!-- Sobre nosotros + toque romántico -->
+<section id="sobre-nosotros">
+    <h2 class="section-title">Nuestra Esencia</h2>
+    <div class="about-card">
+        <p><i class="fas fa-feather-alt" style="color: #C48B9B; margin-right: 8px;"></i> En <strong>Sarah Wendy Makeup Web</strong>, cada trazo cuenta una historia. Somos un refugio donde la feminidad, la sofisticación y la autenticidad se encuentran.</p>
+        <p>Utilizamos formulas dermatologicas y tecnicas de alta definicion para lograr una piel luminosa y un acabado inolvidable. Desde novias soñadas hasta looks editoriales, nos apasiona potenciar tu confianza.</p>
+        <div class="signature"> Belleza con alma, magia en cada detalle </div>
+    </div>
+</section>
+
+<!-- Servicios con diseño cristalino y delicado -->
+<section id="servicios">
+    <h2 class="section-title">Tratamientos & Glamour</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-brush"></i></div>
+            <h3>Maquillaje Social</h3>
+            <p>Realza tu mirada y facciones con estilo natural o sofisticado. Duracion hasta 12h.</p>
+            <div class="service-price">180 Bs</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-crown"></i></div>
+            <h3>Maquillaje de Novia</h3>
+            <p>Prueba previa + productos premium + retoque. Velo y romance garantizados.</p>
+            <div class="service-price">450 Bs</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-feather"></i></div>
+            <h3>Diseño de Cejas</h3>
+            <p>Perfilado arquitectónico, depilación con hilo o cera, armonización facial.</p>
+            <div class="service-price">80 Bs</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-ribbon"></i></div>
+            <h3>Peinado Artístico</h3>
+            <p>Recogidos boho, ondas románticas, trenzas glaseadas. Elegancia garantizada.</p>
+            <div class="service-price">150 Bs</div>
+        </div>
+    </div>
+</section>
+
+<!-- Agendar cita con efecto lujoso -->
+<section id="agendar">
+    <h2 class="section-title">Tu Momento Perfecto</h2>
+    <div class="booking-luxury">
+        <i class="fas fa-spa" style="font-size: 3rem; color: #C48B9B;"></i>
+        <p>Agenda tu cita de forma rápida y exclusiva a través de WhatsApp. Te confirmaremos la disponibilidad con mucho amor ?</p>
+        <a href="https://wa.me/59160042152?text=Hola%20Sarah%20Wendy%2C%20quisiera%20agendar%20una%20cita%20para%20maquillaje%20y%20conocer%20la%20magia%20de%20su%20estudio." target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Agendar vía WhatsApp</a>
+    </div>
+</section>
+
+<!-- Contacto refinado -->
+<section id="ubicacion-contacto">
+    <h2 class="section-title">Ubicación y Contacto</h2>
+    <div class="contact-flex">
+        <div class="contact-glam">
+            <i class="fas fa-map-pin"></i>
+            <h3>Estudio Sarah Wendy</h3>
+            <p>Av. Las Palmeras #221, Equipetrol<br>Santa Cruz de la Sierra, Bolivia</p>
+            <p style="font-size: 0.85rem; margin-top: 8px;"><i class="far fa-clock"></i> Previa cita obligatoria</p>
+        </div>
+        <div class="contact-glam">
+            <i class="fab fa-whatsapp"></i>
+            <h3>Contacto directo</h3>
+            <div class="phone-number">+591 60042152</div>
+            <a href="https://wa.me/59160042152?text=Me%20encantaría%20recibir%20información%20de%20maquillaje%20y%20precios%20por%20favor." target="_blank" class="small-wa"><i class="fab fa-whatsapp"></i> Chatear ahora</a>
+        </div>
+        <div class="contact-glam">
+            <i class="fas fa-gem"></i>
+            <h3>Horarios íntimos</h3>
+            <p>Lunes a Sábado: 09:00 - 19:00</p>
+            <p>Domingos: reservas especiales</p>
+            <p><i class="fas fa-heart" style="color: #C48B9B;"></i> Atención personalizada</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Sarah Wendy Makeup Web — Estudio de belleza con esencia de arte y delicadeza.</p>
+    <p style="margin-top: 8px;">? Donde la belleza encuentra su forma más auténtica ?</p>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinksElem = document.getElementById('navLinks');
+    function toggleMobileMenu() { navLinksElem.classList.toggle('active'); }
+    menuBtn.addEventListener('click', toggleMobileMenu);
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinksElem.classList.remove('active'));
+    });
+    document.addEventListener('click', (e) => {
+        if (!navLinksElem.contains(e.target) && !menuBtn.contains(e.target) && navLinksElem.classList.contains('active')) {
+            navLinksElem.classList.remove('active');
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 30) nav.style.background = 'rgba(255, 248, 250, 0.95)';
+        else nav.style.background = 'rgba(255, 250, 250, 0.85)';
+    });
+</script>
+</body>
+</html>
